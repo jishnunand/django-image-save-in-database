@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		function getBase64(file) {
+		  return new Promise((resolve, reject) => {
+		    const reader = new FileReader();
+		    reader.readAsDataURL(file);
+		    reader.onload = () => resolve(reader.result);
+		    reader.onerror = error => reject(error);
+		  });
+		}
+
+		$(document).ready(function(){
+			$( '#file' ).change(function ( e ){
+		        var file = $('#file')[0].files[0];
+				getBase64(file).then(
+				  data => {
+				  		$('<input />').attr('type', 'hidden')
+			            .attr('name', "something")
+			            .attr('value', data)
+			            .appendTo('#testers');
+		  			}
+				);
+			})
+		})
+		
+
+	</script>
+</head>
+<body>
+	<form id="testers" action="/emp/" method="post">
+		{% csrf_token %}
+		<label>First Name</label><input type="text" name="employee_fname">
+		<label>Last Name</label><input type="text" name="employee_lname">
+		<label>Email ID</label><input type="text" name="employee_email">
+		<label>Phone</label><input type="text" name="employee_phone">
+		<label>Address</label><input type="textarea" row=3 name="employee_address">
+		<label>Gender</label>
+			<select name="employee_gender">
+				<option value="--">--</option>	
+				<option value="MALE">MALE</option>
+				<option value="FEMALE">FEMALE</option>
+			</select>
+		<label>Image</label><input type="file" id="file" name="employee_image">
+		<button type="submit" id="submit"> Submit </button>
+	</form>
+</body>
+</html>
+
