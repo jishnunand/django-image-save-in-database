@@ -1,0 +1,54 @@
+{% include 'base.html' %}
+{% block head %}
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+</style>
+{% endblock %}
+
+{% block main %}
+	<div class="container col-xs-12">
+		<div class="col-xs-6">
+			<!-- Image -->
+			<img src="{% decode emp.employee_image %}" class="img-responsive">
+		</div>
+		<div class="col-xs-6">
+			<!-- Details -->
+			<table>
+				<tr>
+					<td>First Name</td>
+					<td>{{ emp.user.first_name }}</td>
+				</tr>
+				<tr>
+					<td>Last Name</td>
+					<td>{{ emp.user.last_name }}</td>
+				</tr>
+				<tr>
+					<td>Email Id</td>
+					<td>{{ emp.user.email }}</td>
+				</tr>
+				<tr>
+					<td>Phone Number</td>
+					<td>{{ emp.employee_phone }}</td>
+				</tr>
+				<tr>
+					<td>Gender</td>
+					<td>{{ emp.employee_gender }}</td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td>{{ emp.employee_address }}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+{% endblock %}

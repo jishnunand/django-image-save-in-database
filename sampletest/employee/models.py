@@ -14,8 +14,8 @@ GENDER = (
 
 class Employee(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	employee_image = models.BinaryField()
-	image_link = models.CharField(max_length=30)
+	employee_image = models.BinaryField(blank=True)
+	# image_link = models.CharField(max_length=30)
 	employee_phone = models.CharField(max_length=10)
 	employee_address = models.TextField()
 	employee_gender = models.CharField(max_length=6, choices=GENDER, default=DEFAULT)

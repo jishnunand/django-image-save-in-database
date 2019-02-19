@@ -1,0 +1,96 @@
+{% load static %}
+{% include 'base.html' %}
+{% block head %}
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+</style>
+{% endblock %}
+{% block main %}
+	<form action="/emp/" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<!-- <label>First Name</label><input type="text" name="employee_fname">
+		<label>Last Name</label><input type="text" name="employee_lname">
+		<label>Email ID</label><input type="text" name="employee_email">
+		<label>Phone</label><input type="text" name="employee_phone">
+		<label>Address</label><input type="textarea" row=3 name="employee_address">
+		<label>Gender</label>
+			<select name="employee_gender">
+				<option value="--">--</option>	
+				<option value="MALE">MALE</option>
+				<option value="FEMALE">FEMALE</option>
+			</select>
+		<label>Image</label><input type="file" id="file" name="employee_image"> -->
+		<h1 class="h3 mb-3 font-weight-normal">Add Employee</h1>
+		<table>
+			<tr>
+				<td>
+					<label for="{{ form.employee_fname.id_for_label }}" class="sr-only">Employee First Name</label>Employee First Name
+				</td>
+				<td>
+					{{ form.employee_fname }}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="{{ form.employee_lname.id_for_label }}" class="sr-only">Employee First Name</label>Employee Last Name
+				</td>
+				<td>
+					{{ form.employee_lname }}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="{{ form.employee_email.id_for_label }}" class="sr-only">Employee Email</label>Employee Email
+				</td>
+				<td>
+					{{ form.employee_email }}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="{{ form.employee_address.id_for_label }}" class="sr-only">Employee Address</label>Employee Address
+				</td>
+				<td>
+					{{ form.employee_address }}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="{{ form.employee_phone.id_for_label }}" class="sr-only">Employee Phone</label>Employee Phone
+				</td>
+				<td>
+					{{ form.employee_phone }}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="{{ form.employee_gender.id_for_label }}" class="sr-only">Employee Gender</label>Employee Gender
+				</td>
+				<td>
+					{{ form.employee_gender }}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="{{ form.employee_image.id_for_label }}" class="sr-only">Employee Image</label>Employee Image
+				</td>
+				<td>
+					{{ form.employee_image }}
+				</td>
+			</tr>
+		</table>
+		
+		<button type="submit" class="form-control"> Submit </button>
+	</form>
+{% endblock %}
+
