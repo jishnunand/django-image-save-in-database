@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from employee.views import EmployeeView, Agent, login_page,logout_page, employee_details
+from numtoword.views import number_to_word, home
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,6 +26,9 @@ urlpatterns = [
     path('agent/', Agent.as_view(), name='agent'),
     path('login/', login_page, name='login'),
     path('logout/', logout_page, name='logout'),
-    re_path(r'^emp_view/(?P<emp_id>\d+)/', employee_details, name='emp_view')
+    re_path(r'^emp_view/(?P<emp_id>\d+)/', employee_details, name='emp_view'),
+    path('num/', number_to_word, name='num'),
+    re_path(r'^$', home, name='home'),
+
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

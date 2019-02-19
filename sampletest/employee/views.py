@@ -49,7 +49,7 @@ class EmployeeView(LoginRequiredMixin, View):
                 emp.save()
             except Exception as e:
                 print(e)
-            return HttpResponse("hello")
+            return HttpResponseRedirect('/emp/')
 
 
 class Agent(LoginRequiredMixin, View):
